@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package grpc_test;
+
+option go_package = ".;grpc_test";
+
+service GRPCTest {
+  rpc SendMessage(Message) returns (ACK);
+  rpc GetMessagesTo(Person) returns (stream Message);
+  rpc GetAllMessages(google.protobuf.Empty) returns (stream Message);
+}
+
+message Message {
+  string message = 1;
+  Person from = 2;
+  Person to = 3;
+}
+
+message Person {
+  string name = 1;
+  string surname = 2;
+}
+
+message ACK {
+  bool received = 1;
+}

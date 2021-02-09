@@ -1,0 +1,6 @@
+*.idea
+.idea/*
+.git
+
+google_services.json
+pasos.txt
